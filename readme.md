@@ -30,6 +30,7 @@ RaspberryPiを用いて環境制御を行うシステム．
 - hardware/*：各種センサとの通信用
 - setup/*：RaspberryPiの環境構築用
 - software/db/*：各種DBとのデータ送受信
+- software/html/*：操作用Webページに用いるhtml，css（Bootstrap5使用）
 - software/*.py：後述
 - main.py：実行用
 
@@ -57,6 +58,9 @@ RaspberryPiを用いて環境制御を行うシステム．
 |     PC の OS      |              macOS Big Sur 11.4               |
 |   Raspberry Pi    |          Raspberry Pi 3 Model B V1.2          |
 | RaspberryPi の OS | Raspberry Pi OS (32-bit) Released: 2021-05-07 |
+| 温湿度センサ | Aosong Guangzhou Electronics Co., Ltd. AM2302 (DHT22) |
+| CO2濃度センサ | Senseair K30 |
+| リレーモジュール | 秋月電子通商 AE-SH-SSR-8A-KIT |
 
 ## RaspberryPi のセットアップ
 
@@ -160,8 +164,26 @@ rpi_observer % ssh -i rpi_observer_rsa pi@rpiobserver.local
 
 ラズパイにディレクトリ`rpid`をコピーする．
 
-```
+```Mac:zsh
 rpi_observer % scp -ri rpi_observer_rsa rpid pi@rpiobserver.local
+```
+
+Python環境のセットアップを実施する．
+
+```Raspberry Pi:bash
+~ $ source /home/pi/rpid/setup/setup_python.sh
+```
+
+### 実行
+
+回路図通りに結線する．
+
+![figures-回路図](https://user-images.githubusercontent.com/62172470/127176549-fb8077ac-c0f8-4b65-9539-f5b0a9aca886.png)
+
+`main.py`を実行する．
+
+```Raspberry Pi:bash
+(.venv)rpid $ nohup python software/main.py &
 ```
 
 ## Issue
