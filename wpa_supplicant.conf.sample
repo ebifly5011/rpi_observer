@@ -1,0 +1,17 @@
+country=JP
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="sample-ssid-1"
+    psk="sample-psk-1"
+    key_mgmt=WPA-PSK
+    priority=1
+}
+
+network={
+    ssid="sample-ssid-2"
+    psk="sample-psk-2"
+    key_mgmt=WPA-PSK
+    priority=2
+}

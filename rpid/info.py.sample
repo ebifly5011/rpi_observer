@@ -1,0 +1,6 @@
+Discord_WebhookURL = "https://discord.com/api/webhooks/xxx"
+
+Ambient_ChannelID = 00000
+Ambient_WriteKey = "xxx"
+Ambient_ReadKey = "xxx"
+Ambient_UserKey = "xxx"
