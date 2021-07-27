@@ -25,6 +25,24 @@ RaspberryPiを用いて環境制御を行うシステム．
 
 ![figures-回路図](https://user-images.githubusercontent.com/62172470/127176549-fb8077ac-c0f8-4b65-9539-f5b0a9aca886.png)
 
+### 内容物（rpid/以下）
+
+- hardware/*：各種センサとの通信用
+- setup/*：RaspberryPiの環境構築用
+- software/db/*：各種DBとのデータ送受信
+- software/*.py：後述
+- main.py：実行用
+
+#### software/*.pyについて
+
+- controller.py：環境情報をもとにGPIOの出力変更．操作用ページのUI設計．
+- database.py：software/db/*.pyに対して，各DBとのアクセス方法を統一する役割．（現在はDBを全てPrometheusで賄っているのでほぼ未使用）
+- discord.py：Discord（チャットツール）にメッセージを送信する．
+- flask_.py：素のFlaskは扱いづらかったため，threadingと併用したものを再定義．
+- logger.py：各センサから読み取った値をdatabase.pyを通じてロギングする．
+- reporter.py：loggerで読み取った値，controllerの制御値をdiscordにて報告する．
+- types.py：型定義など．入力補完を充実させる目的にも使用．
+
 ### 今後の展望
 
 - 電磁弁を用いたCO2濃度の自動制御
